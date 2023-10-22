@@ -44,7 +44,7 @@ public class Board {
     return pieces[position.getRow()][position.getColumn()];
   }
 
-  public void PlacePiece(Piece piece, Position position) {
+  public void placePiece(Piece piece, Position position) {
     if (isOccupied(position)) {
       throw new BoardException("Position " + position + " already occupied.");
     }
@@ -54,7 +54,7 @@ public class Board {
   }
 
   private boolean positionExists(int row, int column) {
-    return row >= 0 && row < rows && column >= 0 && column > columns;
+    return row >= 0 && row < rows && column >= 0 && column < columns;
   }
 
   public boolean positionExists(Position position) {
