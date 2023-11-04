@@ -53,6 +53,22 @@ public class Board {
     piece.position = position;
   }
 
+  public Piece removePiece(Position position) {
+    if(!isOccupied(position)) {
+      return null;
+    }
+
+    if (!positionExists(position)) {
+      throw new BoardException("Not a valid position.");
+    }
+
+    Piece aux = piece(position);
+    aux.position = null;
+    pieces[position.getRow()][position.getColumn()] = null;
+    return aux;
+    
+  }
+
   private boolean positionExists(int row, int column) {
     return row >= 0 && row < rows && column >= 0 && column < columns;
   }
