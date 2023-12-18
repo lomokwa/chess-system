@@ -18,7 +18,7 @@ public class King extends ChessPiece{
 
   private boolean canMove(Position position) {
     ChessPiece p = (ChessPiece)getBoard().piece(position);
-    return p != null && p.getColor() != getColor();
+    return p == null || p.getColor() != getColor();
   }
 
   @Override
@@ -51,31 +51,30 @@ public class King extends ChessPiece{
       mat[p.getRow()][p.getColumn()] = true;
     }
 
-    // Checking up-left
-      p.setValues(position.getRow() - 1, position.getColumn() - 1);
-      if (getBoard().positionExists(p) && canMove(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-      }
+    // Checking up left
+    p.setValues(position.getRow() - 1, position.getColumn() - 1);
+    if (getBoard().positionExists(p) && canMove(p)) {
+      mat[p.getRow()][p.getColumn()] = true;
+    }
 
-    // Checking down-left
-    p.setValues(position.getRow() + 1, position.getColumn() - 1);
-      if (getBoard().positionExists(p) && canMove(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-      }
-
-    // Checknig up-right
+    // Checking up right
     p.setValues(position.getRow() - 1, position.getColumn() + 1);
-      if (getBoard().positionExists(p) && canMove(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-      }
+    if (getBoard().positionExists(p) && canMove(p)) {
+      mat[p.getRow()][p.getColumn()] = true;
+    }
 
-    // Checking down-right
+    // Checking down left
+    p.setValues(position.getRow() + 1, position.getColumn() - 1);
+    if (getBoard().positionExists(p) && canMove(p)) {
+      mat[p.getRow()][p.getColumn()] = true;
+    }
+
+    // Checking down left
     p.setValues(position.getRow() + 1, position.getColumn() + 1);
-      if (getBoard().positionExists(p) && canMove(p)) {
-        mat[p.getRow()][p.getColumn()] = true;
-      }
+    if (getBoard().positionExists(p) && canMove(p)) {
+      mat[p.getRow()][p.getColumn()] = true;
+    }
 
     return mat;
   }
-  
 }
