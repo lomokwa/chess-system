@@ -103,6 +103,26 @@ public class ChessMatch {
       capturedPieces.add(capturedPiece);
     }
 
+    // #specialmove Castling kingside
+    if (p instanceof King && target.getColumn() == source.getColumn() + 2) {
+      Position rookSource = new Position(source.getRow(), source.getColumn() + 3);
+      Position rookTarget = new Position(source.getRow(), source.getColumn() + 1);
+
+      ChessPiece rook = (ChessPiece)board.removePiece(rookSource);
+      board.placePiece(rook, rookTarget);
+      rook.increaseMoveCount();
+    }
+
+    // #specialmove Castling queenside
+    if (p instanceof King && target.getColumn() == source.getColumn() - 2) {
+      Position rookSource = new Position(source.getRow(), source.getColumn() - 4);
+      Position rookTarget = new Position(source.getRow(), source.getColumn() - 1);
+
+      ChessPiece rook = (ChessPiece)board.removePiece(rookSource);
+      board.placePiece(rook, rookTarget);
+      rook.increaseMoveCount();
+    }
+
     return capturedPiece;
   }
 
@@ -115,6 +135,26 @@ public class ChessMatch {
       board.placePiece(capturedPiece, target);
       capturedPieces.remove(capturedPiece);
       availablePieces.add(capturedPiece);
+    }
+
+    // #specialmove Castling kingside
+    if (p instanceof King && target.getColumn() == source.getColumn() + 2) {
+      Position rookSource = new Position(source.getRow(), source.getColumn() + 3);
+      Position rookTarget = new Position(source.getRow(), source.getColumn() + 1);
+
+      ChessPiece rook = (ChessPiece)board.removePiece(rookTarget);
+      board.placePiece(rook, rookSource);
+      rook.decreaseMoveCount();
+    }
+
+    // #specialmove Castling queenside
+    if (p instanceof King && target.getColumn() == source.getColumn() - 2) {
+      Position rookSource = new Position(source.getRow(), source.getColumn() - 4);
+      Position rookTarget = new Position(source.getRow(), source.getColumn() - 1);
+
+      ChessPiece rook = (ChessPiece)board.removePiece(rookTarget);
+      board.placePiece(rook, rookSource);
+      rook.decreaseMoveCount();
     }
   }
 
