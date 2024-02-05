@@ -1,4 +1,5 @@
 package app;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -8,8 +9,7 @@ import chess.ChessException;
 import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
-
-public class App {
+public class Program {
   public static void main(String[] args) throws Exception {
     Scanner input = new Scanner(System.in);
     ChessMatch chessMatch = new ChessMatch();
