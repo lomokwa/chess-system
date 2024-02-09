@@ -30,7 +30,7 @@ java app/Program
    - `Q` for queen
    - `K` for king
 
-## Java stuff
+## Code Organization and Design Principles
 
 - The game is written in Java 17.0.8.
 - Code uses Java and OOP principles such as encapsulation, inheritance, and polymorphism.
