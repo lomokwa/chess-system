@@ -9,11 +9,13 @@ CLI Chess Game is a command-line interface based chess game written in Java. It 
 To install CLI Chess Game, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/lomokwa/chess-system.git`
-2. Navigate into the directory: `cd chess-system/bin`
-3. Run the following command on your terminal:
-
+2. Compile the program by running the following command on your terminal:
 ```bash
-java app/Program
+javac -d bin -sourcepath src src/app/Program.java
+```
+3. After compiling, run the program by executing the following command:
+```bash
+java -cp bin app.Program
 ```
 
 ## Usage:
